@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "empresas",
+  "info": {
+    "singularName": "empresa",
+    "pluralName": "empresas",
+    "displayName": "Empresas"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Uid_empresas": {
+      "type": "uid",
+      "required": true
+    },
+    "nombre_comercial": {
+      "type": "string"
+    },
+    "nombre_legal": {
+      "type": "string"
+    },
+    "slogan": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "string"
+    },
+    "direccion_maps": {
+      "type": "string"
+    },
+    "direccion_waze": {
+      "type": "string"
+    },
+    "tipos_servicios": {
+      "type": "text"
+    },
+    "servicios_extras": {
+      "type": "text"
+    },
+    "categoria_turismo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria-turismo.categoria-turismo",
+      "inversedBy": "empresas"
+    },
+    "menu": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "fotos_lugar": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "lugares_cercanos": {
+      "type": "text"
+    },
+    "historia": {
+      "type": "text"
+    }
+  }
+}

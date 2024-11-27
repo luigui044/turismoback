@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categoria_turismos",
+  "info": {
+    "singularName": "categoria-turismo",
+    "pluralName": "categoria-turismos",
+    "displayName": "CategoriaTurismo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Id_cat_turismo": {
+      "type": "uid",
+      "required": true
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "categoria_padre": {
+      "type": "string"
+    },
+    "empresas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::empresa.empresa",
+      "mappedBy": "categoria_turismo"
+    }
+  }
+}
