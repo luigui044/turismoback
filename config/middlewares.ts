@@ -12,7 +12,7 @@ export default [
     name: 'strapi::cors',
     config: {
       enabled: true,
-      origin: ['http://localhost:5173', 'http://localhost', 'https://tm.probalosv.com', 'https://turismomas.com', 'https://www.turismomas.com'],
+      origin: ['http://localhost:5173', 'http://localhost', 'https://tm.probalosv.com', 'https://turismomas.com', 'https://www.turismomas.com', '*'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
     },
