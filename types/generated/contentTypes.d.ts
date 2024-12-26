@@ -786,6 +786,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::post.post'
     >;
+    empresas: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::empresa.empresa'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -796,6 +801,78 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoriaEventoCategoriaEvento
+  extends Schema.CollectionType {
+  collectionName: 'categoria_eventos';
+  info: {
+    singularName: 'categoria-evento';
+    pluralName: 'categoria-eventos';
+    displayName: 'CategoriaEventos';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    eventos: Attribute.Relation<
+      'api::categoria-evento.categoria-evento',
+      'oneToMany',
+      'api::evento.evento'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categoria-evento.categoria-evento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categoria-evento.categoria-evento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoriaOfertaCategoriaOferta
+  extends Schema.CollectionType {
+  collectionName: 'categoria_ofertas';
+  info: {
+    singularName: 'categoria-oferta';
+    pluralName: 'categoria-ofertas';
+    displayName: 'CategoriaOfertas';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    ofertas: Attribute.Relation<
+      'api::categoria-oferta.categoria-oferta',
+      'oneToMany',
+      'api::oferta.oferta'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categoria-oferta.categoria-oferta',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categoria-oferta.categoria-oferta',
       'oneToOne',
       'admin::user'
     > &
@@ -902,6 +979,7 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
     singularName: 'empresa';
     pluralName: 'empresas';
     displayName: 'Empresas';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -929,6 +1007,21 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
     >;
     lugares_cercanos: Attribute.Text;
     historia: Attribute.Text;
+    user: Attribute.Relation<
+      'api::empresa.empresa',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    ofertas: Attribute.Relation<
+      'api::empresa.empresa',
+      'oneToMany',
+      'api::oferta.oferta'
+    >;
+    eventos: Attribute.Relation<
+      'api::empresa.empresa',
+      'oneToMany',
+      'api::evento.evento'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -980,6 +1073,101 @@ export interface ApiEtiquetaEtiqueta extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::etiqueta.etiqueta',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEventoEvento extends Schema.CollectionType {
+  collectionName: 'eventos';
+  info: {
+    singularName: 'evento';
+    pluralName: 'eventos';
+    displayName: 'Eventos';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre_evento: Attribute.String;
+    descripcion: Attribute.Blocks;
+    fecha_inicio: Attribute.Date;
+    fecha_final: Attribute.Date;
+    imagenes: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    autorizado: Attribute.Boolean;
+    pagado: Attribute.Boolean;
+    categoria_evento: Attribute.Relation<
+      'api::evento.evento',
+      'manyToOne',
+      'api::categoria-evento.categoria-evento'
+    >;
+    empresa: Attribute.Relation<
+      'api::evento.evento',
+      'manyToOne',
+      'api::empresa.empresa'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::evento.evento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::evento.evento',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOfertaOferta extends Schema.CollectionType {
+  collectionName: 'ofertas';
+  info: {
+    singularName: 'oferta';
+    pluralName: 'ofertas';
+    displayName: 'Ofertas';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre_oferta: Attribute.String;
+    descripcion: Attribute.Blocks;
+    descuento: Attribute.Integer;
+    fecha_inicio: Attribute.Date;
+    fecha_final: Attribute.Date;
+    imagenes: Attribute.Media<'images', true>;
+    autorizado: Attribute.Boolean & Attribute.DefaultTo<false>;
+    pagada: Attribute.Boolean & Attribute.DefaultTo<false>;
+    categoria_oferta: Attribute.Relation<
+      'api::oferta.oferta',
+      'manyToOne',
+      'api::categoria-oferta.categoria-oferta'
+    >;
+    empresa: Attribute.Relation<
+      'api::oferta.oferta',
+      'manyToOne',
+      'api::empresa.empresa'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::oferta.oferta',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::oferta.oferta',
       'oneToOne',
       'admin::user'
     > &
@@ -1095,10 +1283,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::categoria-evento.categoria-evento': ApiCategoriaEventoCategoriaEvento;
+      'api::categoria-oferta.categoria-oferta': ApiCategoriaOfertaCategoriaOferta;
       'api::categoria-turismo.categoria-turismo': ApiCategoriaTurismoCategoriaTurismo;
       'api::category.category': ApiCategoryCategory;
       'api::empresa.empresa': ApiEmpresaEmpresa;
       'api::etiqueta.etiqueta': ApiEtiquetaEtiqueta;
+      'api::evento.evento': ApiEventoEvento;
+      'api::oferta.oferta': ApiOfertaOferta;
       'api::post.post': ApiPostPost;
       'api::post-coment.post-coment': ApiPostComentPostComent;
     }

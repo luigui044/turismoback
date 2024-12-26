@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventos",
+  "info": {
+    "singularName": "evento",
+    "pluralName": "eventos",
+    "displayName": "Eventos",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre_evento": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "blocks"
+    },
+    "fecha_inicio": {
+      "type": "date"
+    },
+    "fecha_final": {
+      "type": "date"
+    },
+    "imagenes": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "autorizado": {
+      "type": "boolean"
+    },
+    "pagado": {
+      "type": "boolean"
+    },
+    "categoria_evento": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria-evento.categoria-evento",
+      "inversedBy": "eventos"
+    },
+    "empresa": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::empresa.empresa",
+      "inversedBy": "eventos"
+    }
+  }
+}

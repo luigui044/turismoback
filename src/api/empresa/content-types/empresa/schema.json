@@ -4,7 +4,8 @@
   "info": {
     "singularName": "empresa",
     "pluralName": "empresas",
-    "displayName": "Empresas"
+    "displayName": "Empresas",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -46,40 +47,61 @@
       "inversedBy": "empresas"
     },
     "menu": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "fotos_lugar": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "lugares_cercanos": {
       "type": "text"
     },
     "historia": {
       "type": "text"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "empresas"
+    },
+    "ofertas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::oferta.oferta",
+      "mappedBy": "empresa"
+    },
+    "eventos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::evento.evento",
+      "mappedBy": "empresa"
     }
   }
 }

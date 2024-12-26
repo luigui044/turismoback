@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ofertas",
+  "info": {
+    "singularName": "oferta",
+    "pluralName": "ofertas",
+    "displayName": "Ofertas",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre_oferta": {
+      "type": "string"
+    },
+    "descripcion": {
+      "type": "blocks"
+    },
+    "descuento": {
+      "type": "integer"
+    },
+    "fecha_inicio": {
+      "type": "date"
+    },
+    "fecha_final": {
+      "type": "date"
+    },
+    "imagenes": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "autorizado": {
+      "type": "boolean",
+      "default": false
+    },
+    "pagada": {
+      "type": "boolean",
+      "default": false
+    },
+    "categoria_oferta": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria-oferta.categoria-oferta",
+      "inversedBy": "ofertas"
+    },
+    "empresa": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::empresa.empresa",
+      "inversedBy": "ofertas"
+    }
+  }
+}
