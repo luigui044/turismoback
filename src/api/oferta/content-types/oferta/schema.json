@@ -31,9 +31,8 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "populate": true,
+      "allowedTypes": ["images"]
     },
     "autorizado": {
       "type": "boolean",
