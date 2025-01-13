@@ -1109,6 +1109,7 @@ export interface ApiEventoEvento extends Schema.CollectionType {
       'manyToOne',
       'api::empresa.empresa'
     >;
+    url_evento: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

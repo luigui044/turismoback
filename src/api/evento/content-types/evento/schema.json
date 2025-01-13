@@ -28,9 +28,12 @@
       "type": "media",
       "multiple": true,
       "required": false,
-      "populate": true,
-
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "autorizado": {
       "type": "boolean"
@@ -48,7 +51,11 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::empresa.empresa",
-      "inversedBy": "eventos"
+      "inversedBy": "eventos",
+      "populate": true
+    },
+    "url_evento": {
+      "type": "string"
     }
   }
 }
