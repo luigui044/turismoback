@@ -1266,6 +1266,75 @@ export interface ApiPostComentPostComent extends Schema.CollectionType {
   };
 }
 
+export interface ApiTAnuncioTAnuncio extends Schema.CollectionType {
+  collectionName: 't_anuncios';
+  info: {
+    singularName: 't-anuncio';
+    pluralName: 't-anuncios';
+    displayName: 't_anuncios';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String;
+    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    url_destino: Attribute.Text;
+    tipo: Attribute.Integer;
+    posicion: Attribute.String;
+    activo: Attribute.Boolean;
+    fecha_inicio: Attribute.DateTime;
+    fecha_fin: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::t-anuncio.t-anuncio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::t-anuncio.t-anuncio',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTConfiguracionesLandingTConfiguracionesLanding
+  extends Schema.CollectionType {
+  collectionName: 't_configuraciones_landings';
+  info: {
+    singularName: 't-configuraciones-landing';
+    pluralName: 't-configuraciones-landings';
+    displayName: 't_configuraciones_landing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clave: Attribute.String;
+    valor: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::t-configuraciones-landing.t-configuraciones-landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::t-configuraciones-landing.t-configuraciones-landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1294,6 +1363,8 @@ declare module '@strapi/types' {
       'api::oferta.oferta': ApiOfertaOferta;
       'api::post.post': ApiPostPost;
       'api::post-coment.post-coment': ApiPostComentPostComent;
+      'api::t-anuncio.t-anuncio': ApiTAnuncioTAnuncio;
+      'api::t-configuraciones-landing.t-configuraciones-landing': ApiTConfiguracionesLandingTConfiguracionesLanding;
     }
   }
 }

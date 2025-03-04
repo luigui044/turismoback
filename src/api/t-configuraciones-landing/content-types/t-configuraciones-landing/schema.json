@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "t_configuraciones_landings",
+  "info": {
+    "singularName": "t-configuraciones-landing",
+    "pluralName": "t-configuraciones-landings",
+    "displayName": "t_configuraciones_landing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "clave": {
+      "type": "string"
+    },
+    "valor": {
+      "type": "string"
+    }
+  }
+}

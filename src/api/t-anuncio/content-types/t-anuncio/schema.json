@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "t_anuncios",
+  "info": {
+    "singularName": "t-anuncio",
+    "pluralName": "t-anuncios",
+    "displayName": "t_anuncios"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "imagen": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "url_destino": {
+      "type": "text"
+    },
+    "tipo": {
+      "type": "integer"
+    },
+    "posicion": {
+      "type": "string"
+    },
+    "activo": {
+      "type": "boolean"
+    },
+    "fecha_inicio": {
+      "type": "datetime"
+    },
+    "fecha_fin": {
+      "type": "datetime"
+    }
+  }
+}
