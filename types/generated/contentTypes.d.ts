@@ -1335,6 +1335,86 @@ export interface ApiTConfiguracionesLandingTConfiguracionesLanding
   };
 }
 
+export interface ApiTCountryComentTCountryComent extends Schema.CollectionType {
+  collectionName: 't_country_coments';
+  info: {
+    singularName: 't-country-coment';
+    pluralName: 't-country-coments';
+    displayName: 't_country_coments';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comentario: Attribute.Text;
+    t_paise: Attribute.Relation<
+      'api::t-country-coment.t-country-coment',
+      'manyToOne',
+      'api::t-pais.t-pais'
+    >;
+    admin_user: Attribute.Relation<
+      'api::t-country-coment.t-country-coment',
+      'oneToOne',
+      'admin::user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::t-country-coment.t-country-coment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::t-country-coment.t-country-coment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTPaisTPais extends Schema.CollectionType {
+  collectionName: 't_paises';
+  info: {
+    singularName: 't-pais';
+    pluralName: 't-paises';
+    displayName: 'T_paises';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    slug: Attribute.String;
+    titular: Attribute.String;
+    historia: Attribute.Blocks;
+    url_waze: Attribute.String;
+    url_maps: Attribute.String;
+    t_country_coments: Attribute.Relation<
+      'api::t-pais.t-pais',
+      'oneToMany',
+      'api::t-country-coment.t-country-coment'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::t-pais.t-pais',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::t-pais.t-pais',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1365,6 +1445,8 @@ declare module '@strapi/types' {
       'api::post-coment.post-coment': ApiPostComentPostComent;
       'api::t-anuncio.t-anuncio': ApiTAnuncioTAnuncio;
       'api::t-configuraciones-landing.t-configuraciones-landing': ApiTConfiguracionesLandingTConfiguracionesLanding;
+      'api::t-country-coment.t-country-coment': ApiTCountryComentTCountryComent;
+      'api::t-pais.t-pais': ApiTPaisTPais;
     }
   }
 }

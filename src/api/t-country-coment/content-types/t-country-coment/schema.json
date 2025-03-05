@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "t_country_coments",
+  "info": {
+    "singularName": "t-country-coment",
+    "pluralName": "t-country-coments",
+    "displayName": "t_country_coments"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "comentario": {
+      "type": "text"
+    },
+    "t_paise": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::t-pais.t-pais",
+      "inversedBy": "t_country_coments"
+    },
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}

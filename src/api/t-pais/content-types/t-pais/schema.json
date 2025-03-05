@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "t_paises",
+  "info": {
+    "singularName": "t-pais",
+    "pluralName": "t-paises",
+    "displayName": "T_paises"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "titular": {
+      "type": "string"
+    },
+    "historia": {
+      "type": "blocks"
+    },
+    "url_waze": {
+      "type": "string"
+    },
+    "url_maps": {
+      "type": "string"
+    },
+    "t_country_coments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::t-country-coment.t-country-coment",
+      "mappedBy": "t_paise"
+    }
+  }
+}
