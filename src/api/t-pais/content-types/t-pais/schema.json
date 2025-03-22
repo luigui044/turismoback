@@ -4,7 +4,8 @@
   "info": {
     "singularName": "t-pais",
     "pluralName": "t-paises",
-    "displayName": "T_paises"
+    "displayName": "T_paises",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -33,6 +34,23 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::t-country-coment.t-country-coment",
+      "mappedBy": "t_paise"
+    },
+    "img_miniatura": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "t_menu_pai": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::t-menu-pais.t-menu-pais",
       "mappedBy": "t_paise"
     }
   }

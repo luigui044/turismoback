@@ -1375,12 +1375,134 @@ export interface ApiTCountryComentTCountryComent extends Schema.CollectionType {
   };
 }
 
+export interface ApiTMenuTMenu extends Schema.CollectionType {
+  collectionName: 't_menus';
+  info: {
+    singularName: 't-menu';
+    pluralName: 't-menus';
+    displayName: 't_menus';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    es_internacional: Attribute.Boolean;
+    t_menu_pai: Attribute.Relation<
+      'api::t-menu.t-menu',
+      'oneToOne',
+      'api::t-menu-pais.t-menu-pais'
+    >;
+    t_menu_items: Attribute.Relation<
+      'api::t-menu.t-menu',
+      'manyToMany',
+      'api::t-menu-item.t-menu-item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::t-menu.t-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::t-menu.t-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTMenuItemTMenuItem extends Schema.CollectionType {
+  collectionName: 't_menu_items';
+  info: {
+    singularName: 't-menu-item';
+    pluralName: 't-menu-items';
+    displayName: 't_menu_items';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    t_menus: Attribute.Relation<
+      'api::t-menu-item.t-menu-item',
+      'manyToMany',
+      'api::t-menu.t-menu'
+    >;
+    titulo: Attribute.String;
+    url: Attribute.String;
+    orden: Attribute.Integer;
+    item_padre: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::t-menu-item.t-menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::t-menu-item.t-menu-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTMenuPaisTMenuPais extends Schema.CollectionType {
+  collectionName: 't_menu_paises';
+  info: {
+    singularName: 't-menu-pais';
+    pluralName: 't-menu-paises';
+    displayName: 't_menu_pais';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    menu_id: Attribute.Integer;
+    pais_id: Attribute.Integer;
+    t_menu: Attribute.Relation<
+      'api::t-menu-pais.t-menu-pais',
+      'oneToOne',
+      'api::t-menu.t-menu'
+    >;
+    t_paise: Attribute.Relation<
+      'api::t-menu-pais.t-menu-pais',
+      'oneToOne',
+      'api::t-pais.t-pais'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::t-menu-pais.t-menu-pais',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::t-menu-pais.t-menu-pais',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTPaisTPais extends Schema.CollectionType {
   collectionName: 't_paises';
   info: {
     singularName: 't-pais';
     pluralName: 't-paises';
     displayName: 'T_paises';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1396,6 +1518,12 @@ export interface ApiTPaisTPais extends Schema.CollectionType {
       'api::t-pais.t-pais',
       'oneToMany',
       'api::t-country-coment.t-country-coment'
+    >;
+    img_miniatura: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    t_menu_pai: Attribute.Relation<
+      'api::t-pais.t-pais',
+      'oneToOne',
+      'api::t-menu-pais.t-menu-pais'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1446,6 +1574,9 @@ declare module '@strapi/types' {
       'api::t-anuncio.t-anuncio': ApiTAnuncioTAnuncio;
       'api::t-configuraciones-landing.t-configuraciones-landing': ApiTConfiguracionesLandingTConfiguracionesLanding;
       'api::t-country-coment.t-country-coment': ApiTCountryComentTCountryComent;
+      'api::t-menu.t-menu': ApiTMenuTMenu;
+      'api::t-menu-item.t-menu-item': ApiTMenuItemTMenuItem;
+      'api::t-menu-pais.t-menu-pais': ApiTMenuPaisTMenuPais;
       'api::t-pais.t-pais': ApiTPaisTPais;
     }
   }

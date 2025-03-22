@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "t_menu_paises",
+  "info": {
+    "singularName": "t-menu-pais",
+    "pluralName": "t-menu-paises",
+    "displayName": "t_menu_pais"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "menu_id": {
+      "type": "integer"
+    },
+    "pais_id": {
+      "type": "integer"
+    },
+    "t_menu": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::t-menu.t-menu",
+      "inversedBy": "t_menu_pai"
+    },
+    "t_paise": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::t-pais.t-pais",
+      "inversedBy": "t_menu_pai"
+    }
+  }
+}

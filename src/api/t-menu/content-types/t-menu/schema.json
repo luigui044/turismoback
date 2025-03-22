@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "t_menus",
+  "info": {
+    "singularName": "t-menu",
+    "pluralName": "t-menus",
+    "displayName": "t_menus"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "es_internacional": {
+      "type": "boolean"
+    },
+    "t_menu_pai": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::t-menu-pais.t-menu-pais",
+      "mappedBy": "t_menu"
+    },
+    "t_menu_items": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::t-menu-item.t-menu-item",
+      "mappedBy": "t_menus"
+    }
+  }
+}
