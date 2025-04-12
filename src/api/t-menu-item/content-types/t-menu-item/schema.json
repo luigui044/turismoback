@@ -29,6 +29,9 @@
     },
     "item_padre": {
       "type": "integer"
+    },
+    "icono": {
+      "type": "string"
     }
   }
 }

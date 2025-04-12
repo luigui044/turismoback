@@ -1437,6 +1437,7 @@ export interface ApiTMenuItemTMenuItem extends Schema.CollectionType {
     url: Attribute.String;
     orden: Attribute.Integer;
     item_padre: Attribute.Integer;
+    icono: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
