@@ -1433,11 +1433,16 @@ export interface ApiTMenuItemTMenuItem extends Schema.CollectionType {
       'manyToMany',
       'api::t-menu.t-menu'
     >;
-    titulo: Attribute.String;
-    url: Attribute.String;
+    label: Attribute.String;
+    to: Attribute.String;
     orden: Attribute.Integer;
     item_padre: Attribute.Integer;
-    icono: Attribute.String;
+    icon: Attribute.String;
+    t_menu_subitems: Attribute.Relation<
+      'api::t-menu-item.t-menu-item',
+      'oneToMany',
+      'api::t-menu-subitem.t-menu-subitem'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1490,6 +1495,44 @@ export interface ApiTMenuPaisTMenuPais extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::t-menu-pais.t-menu-pais',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTMenuSubitemTMenuSubitem extends Schema.CollectionType {
+  collectionName: 't_menu_subitems';
+  info: {
+    singularName: 't-menu-subitem';
+    pluralName: 't-menu-subitems';
+    displayName: 't_menu_subitems';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    label: Attribute.String;
+    to: Attribute.String;
+    icon: Attribute.String;
+    t_menu_item: Attribute.Relation<
+      'api::t-menu-subitem.t-menu-subitem',
+      'manyToOne',
+      'api::t-menu-item.t-menu-item'
+    >;
+    orden: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::t-menu-subitem.t-menu-subitem',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::t-menu-subitem.t-menu-subitem',
       'oneToOne',
       'admin::user'
     > &
@@ -1578,6 +1621,7 @@ declare module '@strapi/types' {
       'api::t-menu.t-menu': ApiTMenuTMenu;
       'api::t-menu-item.t-menu-item': ApiTMenuItemTMenuItem;
       'api::t-menu-pais.t-menu-pais': ApiTMenuPaisTMenuPais;
+      'api::t-menu-subitem.t-menu-subitem': ApiTMenuSubitemTMenuSubitem;
       'api::t-pais.t-pais': ApiTPaisTPais;
     }
   }

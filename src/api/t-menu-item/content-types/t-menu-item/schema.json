@@ -18,10 +18,10 @@
       "target": "api::t-menu.t-menu",
       "inversedBy": "t_menu_items"
     },
-    "titulo": {
+    "label": {
       "type": "string"
     },
-    "url": {
+    "to": {
       "type": "string"
     },
     "orden": {
@@ -30,8 +30,14 @@
     "item_padre": {
       "type": "integer"
     },
-    "icono": {
+    "icon": {
       "type": "string"
+    },
+    "t_menu_subitems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::t-menu-subitem.t-menu-subitem",
+      "mappedBy": "t_menu_item"
     }
   }
 }

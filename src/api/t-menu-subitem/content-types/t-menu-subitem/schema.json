@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "t_menu_subitems",
+  "info": {
+    "singularName": "t-menu-subitem",
+    "pluralName": "t-menu-subitems",
+    "displayName": "t_menu_subitems"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "to": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "t_menu_item": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::t-menu-item.t-menu-item",
+      "inversedBy": "t_menu_subitems"
+    },
+    "orden": {
+      "type": "integer"
+    }
+  }
+}
