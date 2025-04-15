@@ -24,7 +24,8 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::t-menu-item.t-menu-item",
-      "inversedBy": "t_menu_subitems"
+      "inversedBy": "t_menu_subitems",
+      "populate": true
     },
     "orden": {
       "type": "integer"
