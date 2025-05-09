@@ -37,7 +37,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::t-menu-subitem.t-menu-subitem",
-      "mappedBy": "t_menu_item",
+      "mappedBy": "t_menu_items",
       "populate": true
     }
   }
