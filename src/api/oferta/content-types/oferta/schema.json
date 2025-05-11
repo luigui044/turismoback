@@ -32,7 +32,9 @@
       "multiple": true,
       "required": false,
       "populate": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "autorizado": {
       "type": "boolean",

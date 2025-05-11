@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Uid_empresas": {
+    "uid_empresa": {
       "type": "uid",
       "required": true
     },
@@ -102,6 +102,12 @@
       "relation": "oneToMany",
       "target": "api::evento.evento",
       "mappedBy": "empresa"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
     }
   }
 }

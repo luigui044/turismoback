@@ -51,8 +51,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::empresa.empresa",
-      "inversedBy": "eventos",
-      "populate": true
+      "inversedBy": "eventos"
     },
     "url_evento": {
       "type": "string"

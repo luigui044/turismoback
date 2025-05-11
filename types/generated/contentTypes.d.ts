@@ -985,7 +985,7 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    Uid_empresas: Attribute.UID & Attribute.Required;
+    uid_empresa: Attribute.UID & Attribute.Required;
     nombre_comercial: Attribute.String;
     nombre_legal: Attribute.String;
     slogan: Attribute.String;
@@ -1022,6 +1022,8 @@ export interface ApiEmpresaEmpresa extends Schema.CollectionType {
       'oneToMany',
       'api::evento.evento'
     >;
+    telefono: Attribute.String;
+    email: Attribute.Email;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
