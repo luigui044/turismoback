@@ -27,6 +27,7 @@ export default factories.createCoreController('api::empresa.empresa', ({ strapi 
             }
         } catch (error) {
             strapi.log.error('Error al enviar correo de confirmación:', error);
+
         }
 
         // 5. Retorna la respuesta original
